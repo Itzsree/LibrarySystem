@@ -1,0 +1,18 @@
+<div class="container pad-top">
+  <a ui-sref="newReview" class="btn-primary btn-lg nodecoration">Add New Review</a>
+  <table class="table shipwrecktable">
+      <tr>
+          <td><h3>All Reviews</h3></td>
+          <td></td>
+      </tr>
+      <tr ng-repeat="review in reviews">
+          <td>{{review.id}}</td>
+          <td>{{review.content}}</td>
+          <td>{{review.book.id}}</td>
+          <td>
+              <a class="btn btn-primary" ui-sref="viewReview({id:review.id})">View</a>
+              <a class="btn btn-danger"  ng-click="deleteReview(review)">Delete</a>
+          </td>
+      </tr>
+  </table>
+</div>

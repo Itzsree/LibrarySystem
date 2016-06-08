@@ -28,19 +28,23 @@ public class ReviewController {
 		return reviewsList;
 	}
 	
+	
 	@RequestMapping(value="reviews",method=RequestMethod.POST)
 	public Review create(@RequestBody Review review){
 		return reviewRepository.saveAndFlush(review);
 	}
 	
+	
 	@RequestMapping(value="reviews/{id}",method=RequestMethod.GET)
 	public Review get(@PathVariable long id){
+		System.out.println("get : reviews");
 		Review review=reviewRepository.findOne(id);
 		return review;
 	}
 	
 	@RequestMapping(value="reviews/{id}",method=RequestMethod.PUT)
 	public Review update(@PathVariable long id,@RequestBody Review review){
+		System.out.println("update : reviews");
 		Review updatedReview=reviewRepository.findOne(id);
 		BeanUtils.copyProperties(review, updatedReview);		
 		return reviewRepository.saveAndFlush(updatedReview);
@@ -48,6 +52,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="reviews/{id}",method=RequestMethod.DELETE)
 	public Review delete(@PathVariable long id){
+		System.out.println("delete : reviews");
 		Review deletedReview=reviewRepository.findOne(id);
 		reviewRepository.delete(id);
 		return deletedReview;
